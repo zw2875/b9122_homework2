@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import urllib.request
-#from urllib.request import Request
 
 seed_url = "https://www8.gsb.columbia.edu"
 
@@ -14,7 +13,7 @@ while len(urls) > 0 and len(opened) < maxNumUrl:
     # DEQUEUE A URL FROM urls AND TRY TO OPEN AND READ IT
     try:
         curr_url=urls.pop(0)
-        print("num. of URLs in stack: %d " % len(urls))
+        print("The number of URLs in stack: %d " % len(urls))
         print("Trying to access= "+curr_url)
         req = urllib.request.Request(curr_url,headers={'User-Agent': 'Mozilla/5.0'})
         webpage = urllib.request.urlopen(req).read()
@@ -42,9 +41,8 @@ while len(urls) > 0 and len(opened) < maxNumUrl:
             print("***urls.append and seen.append***")
             urls.append(childUrl)
             seen.append(childUrl)
-        else:
-            print("######")
 
+print("\n")
 print("num. of URLs seen = %d, and scanned = %d" % (len(seen), len(opened)))
 print("List of seen URLs:")
 for seen_url in seen:
